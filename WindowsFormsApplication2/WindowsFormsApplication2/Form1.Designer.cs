@@ -351,6 +351,7 @@
             // treeView1
             // 
             resources.ApplyResources(this.treeView1, "treeView1");
+            this.treeView1.HideSelection = false;
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Name = "treeView1";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
@@ -360,6 +361,7 @@
             ((System.Windows.Forms.TreeNode)(resources.GetObject("treeView1.Nodes3"))),
             ((System.Windows.Forms.TreeNode)(resources.GetObject("treeView1.Nodes4")))});
             this.treeView1.ShowLines = false;
+            this.treeView1.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterExpand);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect_1);
             // 
             // imageList1
@@ -376,8 +378,8 @@
             this.imageList1.Images.SetKeyName(7, "explorer_library_16px_522612_easyicon.net.ico");
             this.imageList1.Images.SetKeyName(8, "F_Drive.ico");
             this.imageList1.Images.SetKeyName(9, "favorite_16px_1156830_easyicon.net.ico");
-            this.imageList1.Images.SetKeyName(10, "file_16px_1201060_easyicon.net.ico");
-            this.imageList1.Images.SetKeyName(11, "Folder_folder_16px_1083918_easyicon.net.ico");
+            this.imageList1.Images.SetKeyName(10, "file.ico");
+            this.imageList1.Images.SetKeyName(11, "Folder.ico");
             this.imageList1.Images.SetKeyName(12, "Homegroup_16px_1072825_easyicon.net.ico");
             this.imageList1.Images.SetKeyName(13, "music_player_16px_1201163_easyicon.net.ico");
             this.imageList1.Images.SetKeyName(14, "Network_16px_1198367_easyicon.net.ico");
@@ -394,6 +396,7 @@
             this.columnHeader4});
             resources.ApplyResources(this.listView1, "listView1");
             this.listView1.Name = "listView1";
+            this.listView1.SmallImageList = this.imageList1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             // 
