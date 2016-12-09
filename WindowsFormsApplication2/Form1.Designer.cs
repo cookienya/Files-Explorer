@@ -76,6 +76,16 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.打开ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.新建文件夹ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.复制ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.粘贴ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.剪切ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.属性ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -83,6 +93,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -103,7 +114,6 @@
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.toolStripButton1, "toolStripButton1");
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton2
             // 
@@ -115,6 +125,7 @@
             // 
             resources.ApplyResources(this.tsbaddress, "tsbaddress");
             this.tsbaddress.Name = "tsbaddress";
+            this.tsbaddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tsbaddress_KeyPress);
             // 
             // toolStripButton3
             // 
@@ -126,7 +137,6 @@
             // 
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             resources.ApplyResources(this.toolStripTextBox1, "toolStripTextBox1");
-            this.toolStripTextBox1.Click += new System.EventHandler(this.toolStripTextBox1_Click);
             // 
             // toolStripButton4
             // 
@@ -145,7 +155,6 @@
             this.刻录ToolStripMenuItem,
             this.新建文件夹ToolStripMenuItem});
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // 组织ToolStripMenuItem
             // 
@@ -210,6 +219,7 @@
             // 
             this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
             resources.ApplyResources(this.删除ToolStripMenuItem, "删除ToolStripMenuItem");
+            this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
             // 
             // 重命名ToolStripMenuItem
             // 
@@ -300,6 +310,7 @@
             // 
             this.新建文件夹ToolStripMenuItem.Name = "新建文件夹ToolStripMenuItem";
             resources.ApplyResources(this.新建文件夹ToolStripMenuItem, "新建文件夹ToolStripMenuItem");
+            this.新建文件夹ToolStripMenuItem.Click += new System.EventHandler(this.新建文件夹ToolStripMenuItem_Click);
             // 
             // toolStrip2
             // 
@@ -310,7 +321,6 @@
             this.toolStripButton6,
             this.toolStripButton7});
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip2_ItemClicked);
             // 
             // toolStripButton5
             // 
@@ -354,14 +364,8 @@
             this.treeView1.HideSelection = false;
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Name = "treeView1";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeView1.Nodes"))),
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeView1.Nodes1"))),
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeView1.Nodes2"))),
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeView1.Nodes3"))),
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeView1.Nodes4")))});
             this.treeView1.ShowLines = false;
-            this.treeView1.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterExpand);
+            this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeExpand);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect_1);
             // 
             // imageList1
@@ -394,11 +398,13 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
+            this.listView1.ContextMenuStrip = this.contextMenuStrip1;
             resources.ApplyResources(this.listView1, "listView1");
             this.listView1.Name = "listView1";
             this.listView1.SmallImageList = this.imageList1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.ItemActivate += new System.EventHandler(this.listView1_ItemActivate);
             // 
             // columnHeader1
             // 
@@ -415,6 +421,69 @@
             // columnHeader4
             // 
             resources.ApplyResources(this.columnHeader4, "columnHeader4");
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.打开ToolStripMenuItem,
+            this.新建文件夹ToolStripMenuItem1,
+            this.toolStripSeparator5,
+            this.复制ToolStripMenuItem1,
+            this.粘贴ToolStripMenuItem1,
+            this.剪切ToolStripMenuItem1,
+            this.删除ToolStripMenuItem1,
+            this.toolStripSeparator6,
+            this.属性ToolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
+            // 
+            // 打开ToolStripMenuItem
+            // 
+            this.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem";
+            resources.ApplyResources(this.打开ToolStripMenuItem, "打开ToolStripMenuItem");
+            this.打开ToolStripMenuItem.Click += new System.EventHandler(this.打开ToolStripMenuItem_Click);
+            // 
+            // 新建文件夹ToolStripMenuItem1
+            // 
+            this.新建文件夹ToolStripMenuItem1.Name = "新建文件夹ToolStripMenuItem1";
+            resources.ApplyResources(this.新建文件夹ToolStripMenuItem1, "新建文件夹ToolStripMenuItem1");
+            this.新建文件夹ToolStripMenuItem1.Click += new System.EventHandler(this.新建文件夹ToolStripMenuItem1_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
+            // 
+            // 复制ToolStripMenuItem1
+            // 
+            this.复制ToolStripMenuItem1.Name = "复制ToolStripMenuItem1";
+            resources.ApplyResources(this.复制ToolStripMenuItem1, "复制ToolStripMenuItem1");
+            // 
+            // 粘贴ToolStripMenuItem1
+            // 
+            this.粘贴ToolStripMenuItem1.Name = "粘贴ToolStripMenuItem1";
+            resources.ApplyResources(this.粘贴ToolStripMenuItem1, "粘贴ToolStripMenuItem1");
+            // 
+            // 剪切ToolStripMenuItem1
+            // 
+            this.剪切ToolStripMenuItem1.Name = "剪切ToolStripMenuItem1";
+            resources.ApplyResources(this.剪切ToolStripMenuItem1, "剪切ToolStripMenuItem1");
+            // 
+            // 删除ToolStripMenuItem1
+            // 
+            this.删除ToolStripMenuItem1.Name = "删除ToolStripMenuItem1";
+            resources.ApplyResources(this.删除ToolStripMenuItem1, "删除ToolStripMenuItem1");
+            this.删除ToolStripMenuItem1.Click += new System.EventHandler(this.删除ToolStripMenuItem1_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
+            // 
+            // 属性ToolStripMenuItem1
+            // 
+            this.属性ToolStripMenuItem1.Name = "属性ToolStripMenuItem1";
+            resources.ApplyResources(this.属性ToolStripMenuItem1, "属性ToolStripMenuItem1");
             // 
             // Form1
             // 
@@ -437,6 +506,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -490,6 +560,16 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 打开ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 新建文件夹ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem 复制ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 粘贴ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 剪切ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem 属性ToolStripMenuItem1;
     }
 }
 
